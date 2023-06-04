@@ -245,6 +245,7 @@ function Pop(){var cssRuleFile="https://popupsmart.com/freechat_style.css";let l
 let createPopUp=function(){let activeService=content.services[0].name;if(typeof conDivObj==="undefined"){conDivObj=document.createElement("DIV");conDivObj.setAttribute("id","freechatpopup");}
 if(content.position==="right"){conDivObj.style.left="unset";conDivObj.style.right=0;conDivObj.style.alignItems="flex-end";}else if(content.position==="left"){conDivObj.style.right="unset";conDivObj.style.left=0;conDivObj.style.alignItems="flex-start";}
 conDivObj.innerHTML=`
+       <div class="modal-content">
       <div class="freechat-popup ${content.show&&"freechat-popup-show"}" id="freechat-popup">
         <div class="freechat-popup-header" style="background-color: ${
 content.color
