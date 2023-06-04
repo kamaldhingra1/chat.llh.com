@@ -245,7 +245,8 @@ function Pop(){var cssRuleFile="https://popupsmart.com/freechat_style.css";let l
 let createPopUp=function(){let activeService=content.services[0].name;if(typeof conDivObj==="undefined"){conDivObj=document.createElement("DIV");conDivObj.setAttribute("id","freechatpopup");}
 if(content.position==="right"){conDivObj.style.left="unset";conDivObj.style.right=0;conDivObj.style.alignItems="flex-end";}else if(content.position==="left"){conDivObj.style.right="unset";conDivObj.style.left=0;conDivObj.style.alignItems="flex-start";}
 conDivObj.innerHTML=`
-       <div class="modal-content">
+<div id="myModal" class="modal">
+  <div class="modal-content">
       <div class="freechat-popup ${content.show&&"freechat-popup-show"}" id="freechat-popup">
         <div class="freechat-popup-header" style="background-color: ${
 content.color
@@ -314,7 +315,7 @@ content.color
           <span>i</span>${content.viaWhatsapp}
         </div>
 
-      </div>
+      </div></div></div>
     `;function serviceSeletor(){const service={};content.services.map((i)=>{service[i.name]=i.content;});if(activeService==="whatsapp"){document.getElementById("freechat-popup-message").innerHTML=freechatInput;const input=document.getElementById("freechat-popup-input");const inputSvg=document.getElementById("freechat-popup-input-svg");input.addEventListener("input",(e)=>{input.value.length>0?(inputSvg.style.color=content.color):(inputSvg.style.color="#CCCCCC");});input.addEventListener("keypress",(e)=>{if(e.key==="Enter"){window.open(`https://wa.me/${service.whatsapp}?text=${input.value}!`,"_blank");}});inputSvg.addEventListener("click",function(){window.open(`https://wa.me/${service.whatsapp}?text=${input.value}!`,"_blank");});}else{document.getElementById("freechat-popup-message").innerHTML=freechatNotInput;document.getElementById("freechat-popup-notinput-icon").innerHTML=`
           <span class="fc-icon-${activeService}-2">
             ${activeService==="telegram"?telegramSVG:""}
